@@ -15,4 +15,5 @@ pyvenv.cfg
 pip-selfcheck.json
 share
 __pycache__
+*.pyc
 
