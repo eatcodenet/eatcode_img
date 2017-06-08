@@ -4,17 +4,11 @@ import subprocess
 import eatcode_img
 
 
-def scan_dir(img_dir):
+def scan(img_dir):
     _images = []
     for entry in os.scandir(img_dir):
-        cmd = ["identify", "-format", "%m,%h,%w,%M", (img_dir + os.sep + entry.name)]
+        cmd = ["identify", "-format", "%h,%w,%b,%m,%M", (img_dir + os.sep + entry.name)]
         output = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("UTF-8").strip()
-        (img_type, img_height, img_width, img_name) = output.split(",")
-        _images.append(eatcode_img.Image(img_name, img_height, img_width, img_type))
+        (_height, _width, _size_bytes, _image_format, _name) = output.split(",")
+        _images.append(eatcode_img.Image(_name, int(_height), int(_width), int(_size_bytes[:-1]), _image_format))
     return _images
-
-
-if __name__ == '__main__':
-    images = scan_dir('/home/ayub/Pictures')
-    for img in images:
-        print(img)

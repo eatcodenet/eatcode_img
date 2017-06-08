@@ -3,9 +3,6 @@ from distutils.core import setup
 setup(
     name='eatcode_img',
     version='1.0',
-    install_requires=[
-        'PythonMagick',
-    ],
     packages=['lib.python3.5.site-packages.pip', 'lib.python3.5.site-packages.pip.req',
               'lib.python3.5.site-packages.pip.vcs', 'lib.python3.5.site-packages.pip.utils',
               'lib.python3.5.site-packages.pip.compat', 'lib.python3.5.site-packages.pip.models',
@@ -72,5 +69,5 @@ setup(
     license='MIT',
     author='Ayub Malik',
     author_email='ayub.malik@gmail.com',
-    description='Some imagemagick image helper functions'
+    description='Some imagemagick helper functions'
 )
