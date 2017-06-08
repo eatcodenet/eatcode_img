@@ -19,7 +19,6 @@ def _init():
 
 def copy_images(src_dir, dest_dir, filter_predicate):
     images = eatcode_img.scan_dir.scan(src_dir)
-    print("i." + filter_predicate)
     filtered = [i for i in images if eval("i." + filter_predicate)]
     for src_img in filtered:
         logging.debug("copying image {} to dir {}".format(src_img, dest_dir))
