@@ -6,7 +6,8 @@ import eatcode_img
 
 def scan(img_dir):
     _images = []
-    for entry in os.scandir(img_dir):
+    files = [f for f in os.scandir(img_dir) if f.is_file()]
+    for entry in files:
         cmd = ["identify", "-format", "%h,%w,%b,%m,%M", (img_dir + os.sep + entry.name)]
         process = subprocess.run(cmd, stdout=subprocess.PIPE)
         if process.returncode == 0:
